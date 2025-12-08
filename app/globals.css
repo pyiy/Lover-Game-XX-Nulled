@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 6%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 240 10% 6%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(180deg, #0a0a12 0%, #12101a 50%, #1a0f1f 100%);
+    background-attachment: fixed;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  .gradient-primary {
+    @apply bg-gradient-to-r from-brand-pink via-brand-rose to-brand-purple;
+  }
+  .gradient-secondary {
+    @apply bg-gradient-to-r from-[#667EEA] to-[#764BA2];
+  }
+  .glow-pink {
+    box-shadow: 0 8px 24px rgba(255, 107, 157, 0.2);
+  }
+  .glow-purple {
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+  }
+  .heart-pattern {
+    background-image: radial-gradient(circle, rgba(255, 107, 157, 0.08) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  
+  /* 苹果风格按钮 */
+  .apple-button {
+    @apply rounded-2xl font-semibold transition-all duration-200;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .apple-button:active {
+    transform: scale(0.98);
+  }
+  
+  /* 苹果风格卡片 */
+  .apple-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@layer utilities {
+  @keyframes dice-roll {
+    0% {
+      transform: rotate3d(1, 1, 0, 0deg);
+    }
+    25% {
+      transform: rotate3d(1, 1, 0, 90deg) scale(1.1);
+    }
+    50% {
+      transform: rotate3d(1, 1, 0, 180deg) scale(1.2);
+    }
+    75% {
+      transform: rotate3d(1, 1, 0, 270deg) scale(1.1);
+    }
+    100% {
+      transform: rotate3d(1, 1, 0, 360deg);
+    }
+  }
+
+  .animate-dice-roll {
+    animation: dice-roll 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  @keyframes glow-pulse {
+    0% {
+      box-shadow: 0 0 0 rgba(255, 107, 157, 0);
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 107, 157, 0.35);
+      transform: translateY(-1px) scale(1.03);
+    }
+    100% {
+      box-shadow: 0 0 0 rgba(255, 107, 157, 0);
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 1.2s ease-in-out infinite;
+  }
+
+  @keyframes button-press {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.96) translateY(1px);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-button-press {
+    animation: button-press 180ms ease-out;
+  }
+}
